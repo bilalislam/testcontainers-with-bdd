@@ -1,4 +1,4 @@
-package org.testcontainers.demo.kafka;
+package org.testcontainers.demo.infrastructure.configs.kafka;
 
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.consumer.ConsumerConfig;

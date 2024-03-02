@@ -1,4 +1,4 @@
-package org.testcontainers.demo.kafka;
+package org.testcontainers.demo.infrastructure.configs.kafka;
 
 import lombok.Getter;
 import lombok.Setter;
