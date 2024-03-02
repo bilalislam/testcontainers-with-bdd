@@ -7,7 +7,6 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.testcontainers.demo.domain.constant.TicketCdcMigrateRabbitConstants;
 import org.testcontainers.demo.domain.event.TroubleTicketCreatedEvent;
 
-import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 /*
@@ -18,10 +17,10 @@ import java.util.concurrent.TimeUnit;
  * kafka template
  * rabbitmq template
  * */
-public class ClaimProcessSteps {
+public class TicketProcessSteps {
     private final RabbitTemplate rabbitTemplate;
 
-    public ClaimProcessSteps(RabbitTemplate rabbitTemplate) {
+    public TicketProcessSteps(RabbitTemplate rabbitTemplate) {
         this.rabbitTemplate = rabbitTemplate;
     }
 
