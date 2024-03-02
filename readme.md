@@ -15,3 +15,10 @@
 * [ ] kafka
 * [ ] wiremock
 * [ ] real project integration
+
+# test fx todo
+* [ ] rest
+* [ ] mock
+* [ ] mongo template
+* [ ] rabbitmq template
+* [ ] kafka template

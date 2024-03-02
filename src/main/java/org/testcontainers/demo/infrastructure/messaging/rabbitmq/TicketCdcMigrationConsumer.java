@@ -23,7 +23,7 @@ public class TicketCdcMigrationConsumer {
     /*
      * todo : consume the event from the rabbitmq on testcontainers
      * consume event
-     * execute the business logic
+     * execute the business logic (external ignore edildiğinde testler stale olur,ticket id ile get edilmesi lazım)
      * store to the mongo
      * raise the event to kafka
      * */

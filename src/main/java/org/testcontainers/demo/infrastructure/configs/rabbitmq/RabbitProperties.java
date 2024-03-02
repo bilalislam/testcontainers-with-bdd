@@ -8,11 +8,11 @@ import org.springframework.stereotype.Component;
 @Getter
 @Setter
 @Component
-@ConfigurationProperties(prefix = "rabbitmq")
+@ConfigurationProperties(prefix = "spring.rabbitmq")
 public class RabbitProperties {
-    private String address;
+    private String host;
+    private Integer port;
     private String username;
     private String password;
     private Integer retryCount;
-    private Integer concurrentConsumers;
 }
