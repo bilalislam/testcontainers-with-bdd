@@ -25,7 +25,7 @@ public class TicketProcessSteps {
     }
 
     @Given("ticket processing is up and running")
-    public void claim_processing_is_up_and_running() {
+    public void ticket_processing_is_up_and_running() {
         var event = TroubleTicketCreatedEvent
                 .builder()
                 .description("test")
@@ -40,16 +40,16 @@ public class TicketProcessSteps {
     }
 
     @Then("the ticket status is sent to message queue for communication")
-    public void claim_status_is_sent_to_message_queue_for_communication() {
+    public void ticket_status_is_sent_to_message_queue_for_communication() {
     }
 
     @When("a ticket request of {string} policy with claim amount {double} is submitted queue")
-    public void a_claim_request_is_submitted_queue(String product, Double amount) {
+    public void a_ticket_request_is_submitted_queue(String product, Double amount) {
 
     }
 
     @Then("the ticket case is reviewed and saved to database with status {string}")
-    public void claim_status_is_reviewed_and_saved_to_database_with_status(String status) {
+    public void ticket_status_is_reviewed_and_saved_to_database_with_status(String status) {
 
     }
 }
