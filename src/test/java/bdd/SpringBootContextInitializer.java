@@ -4,6 +4,7 @@ import org.springframework.boot.test.util.TestPropertyValues;
 import org.springframework.context.ApplicationContextInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
 
+import static bdd.TestContainersSetup.getBootstrapServers;
 import static bdd.TestContainersSetup.getMongoDBContainerUri;
 import static bdd.TestContainersSetup.getRabbitMQContainerIPAddress;
 import static bdd.TestContainersSetup.getRabbitMQContainerPort;
@@ -18,8 +19,8 @@ public class SpringBootContextInitializer implements ApplicationContextInitializ
         TestPropertyValues values = TestPropertyValues.of(
                 "spring.rabbitmq.host=" + getRabbitMQContainerIPAddress(),
                 "spring.rabbitmq.port=" + getRabbitMQContainerPort(),
-                "spring.data.mongodb.uri=" + getMongoDBContainerUri()
-                //"kafka.bootstrap-servers=" + getBootstrapServers()
+                "spring.data.mongodb.uri=" + getMongoDBContainerUri(),
+                "kafka.bootstrap-servers=" + getBootstrapServers()
         );
 
         values.applyTo(configurableApplicationContext);

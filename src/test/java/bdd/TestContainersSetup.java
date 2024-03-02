@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.env.ConfigurableEnvironment;
+import org.testcontainers.containers.KafkaContainer;
 import org.testcontainers.containers.MongoDBContainer;
 import org.testcontainers.containers.RabbitMQContainer;
 import org.testcontainers.containers.output.Slf4jLogConsumer;
@@ -12,7 +13,6 @@ import org.testcontainers.utility.DockerImageName;
 @Slf4j
 public class TestContainersSetup {
     private static final int RABBITMQ_PORT = 5672;
-    private static final int RABBITMQ_MANAGEMENT_PORT = 15672;
     private static final String RABBITMQ_IMAGE = "rabbitmq:3.8-management";
     private static final String RABBITMQ_DEFAULT_VHOST = "RABBITMQ_DEFAULT_VHOST";
     private static final String RABBITMQ_DEFAULT_USER = "RABBITMQ_DEFAULT_USER";
@@ -37,9 +37,9 @@ public class TestContainersSetup {
             .withExposedPorts(RABBITMQ_PORT)
             .withReuse(true);
 
-//    private static final KafkaContainer kafkaContainer = new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:7.5.0")
-//            .asCompatibleSubstituteFor("confluentinc/cp-kafka"))
-//            .withReuse(true);
+    private static final KafkaContainer kafkaContainer = new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:7.5.0")
+            .asCompatibleSubstituteFor("confluentinc/cp-kafka"))
+            .withReuse(true);
 
 
     static void initTestContainers(ConfigurableEnvironment configEnv) {
@@ -52,8 +52,8 @@ public class TestContainersSetup {
         mongoDBContainer.start();
         mongoDBContainer.followOutput(new Slf4jLogConsumer(MONGODB_LOGGER));
 
-//        kafkaContainer.start();
-//        kafkaContainer.followOutput(new Slf4jLogConsumer(KAFKA_LOGGER));
+        kafkaContainer.start();
+        kafkaContainer.followOutput(new Slf4jLogConsumer(KAFKA_LOGGER));
     }
 
     public static String getRabbitMQContainerIPAddress() {
@@ -64,15 +64,11 @@ public class TestContainersSetup {
         return rabbitMqContainer.getMappedPort(RABBITMQ_PORT);
     }
 
-    public static int getRabbitMQContainerManagementPort() {
-        return rabbitMqContainer.getMappedPort(RABBITMQ_MANAGEMENT_PORT);
-    }
-
     public static String getMongoDBContainerUri() {
         return mongoDBContainer.getReplicaSetUrl();
     }
 
-//    public static String getBootstrapServers() {
-//        return kafkaContainer.getBootstrapServers();
-//    }
+    public static String getBootstrapServers() {
+        return kafkaContainer.getBootstrapServers();
+    }
 }
