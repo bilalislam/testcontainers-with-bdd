@@ -22,3 +22,6 @@
 * [ ] mongo template
 * [ ] rabbitmq template
 * [ ] kafka template
+
+# report
+* [ ] cucumber allure report plugin
